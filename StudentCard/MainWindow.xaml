@@ -1,0 +1,117 @@
+﻿<Window x:Class="StudentCard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentCard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+
+    <!--Главный контейнер-->
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Заголовок-->
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" 
+                   Margin="0,10,0,10"
+                   Text="Профиль студента" VerticalAlignment="Top" 
+                   FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+
+        <!--Основное содержание-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--Левая колонка с формами-->
+            <StackPanel Margin="0,10,0,0">
+                <!--Личная информация-->
+                <GroupBox Height="125" 
+                          Header="Личная информация"
+                          Margin="5,0,0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="49*"/>
+                            <ColumnDefinition Width="180*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Label x:Name="lbFirstName" Content="Имя: "/>
+                            <Label x:Name="lbLastName" Content="Фамилия: "/>
+                            <Label x:Name="lbAge" Content="Возраст: "/>
+                            <Label x:Name="lbGender" Content="Пол: "/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBox x:Name="TxtFirstName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,2,0,5"/>
+                            <TextBox x:Name="TxtLastName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtAge" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbMale" Content="Мужской" Margin="0,0,20,0"/>
+                                <RadioButton x:Name="rbFemale" Content="Женский" Margin="0,0,20,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <!--Контакты-->
+                <GroupBox Height="73" Header="Контакты" Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="49*"/>
+                            <ColumnDefinition Width="180*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Label x:Name="lbEmail" Content="Email"/>
+                            <Label x:Name="lbPhone" Content="Телефон"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" Text="TextBox" Width="280" Height="21" Margin="0,1,0,5"/>
+                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" Text="TextBox" Width="280" Height="21" Margin="0,1,0,5"/>
+                        </StackPanel>
+
+                    </Grid>
+                </GroupBox>
+                <!--Обучение-->
+                <GroupBox Height="82" Header="Обучение" Margin="5,0,0,5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="49*"/>
+                            <ColumnDefinition Width="180*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Label x:Name="lbCourse" Content="Курс"/>
+                            <Label x:Name="lbSpecialization" Content="Направление" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <ComboBox x:Name="cmbCourse" Width="280" Margin="0,1,0,5" >
+                                <Button Content="1"/>
+                                <Button Content="2"/>
+                                <Button Content="3"/>
+                                <Button Content="4"/>
+                            </ComboBox>
+                            <ComboBox x:Name="cmbSpecialization" Width="280" Margin="0,1,0,5" >
+                                <ComboBoxItem Content="Программирование"/>
+                                <ComboBoxItem Content="Дизайн"/>
+                                <ComboBoxItem Content="Сети"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+            <!--Правая колонка с фото-->
+            <StackPanel Grid.Column="1">
+                <Border BorderBrush="Black" BorderThickness="1" Height="279"/>
+                <Button Content="Загрузить фото"/>
+            </StackPanel>
+        </Grid>
+
+        <!--Кнопки действий-->
+        <Button Content="Очистить" HorizontalAlignment="Left" 
+                Height="30" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Center" Width="90"/>
+        <Button Content="Сохранить" 
+                Height="30" Margin="0,20,40,0" Grid.Row="2" VerticalAlignment="Top" Width="90" HorizontalAlignment="Right"/>
+
+    </Grid>
+</Window>
