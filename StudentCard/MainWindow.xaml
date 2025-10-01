@@ -1,11 +1,17 @@
-﻿<Window x:Class="StudentCard.MainWindow"
+﻿
+    <Window x:Class="StudentCard.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCard"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="520" Width="800">
+
+    <Window.Resources>
+        <local:ProgressSumConverter x:Key="ProgressSumConverter" />
+    </Window.Resources>
 
     <!--Главный контейнер-->
     <Grid Margin="10">
@@ -30,7 +36,8 @@
             <!--Левая колонка с формами-->
             <StackPanel Margin="0,10,0,0">
                 <!--Личная информация-->
-                <GroupBox Height="125" 
+                <GroupBox Height="160
+                          " 
                           Header="Личная информация"
                           Margin="5,0,0,10">
                     <Grid>
@@ -43,15 +50,18 @@
                             <Label x:Name="lbLastName" Content="Фамилия: "/>
                             <Label x:Name="lbAge" Content="Возраст: "/>
                             <Label x:Name="lbGender" Content="Пол: "/>
+                            <Label x:Name="lbDateBirthday" Content="Дата рождения" FontSize="10" Margin="0,2,0,41"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBox x:Name="txtFirstName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,2,0,5"/>
-                            <TextBox x:Name="txtLastName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
-                            <TextBox x:Name="txtAge" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <TextBox x:Name="txtFirstName" TextWrapping="Wrap" Text="" Width="280" Height="23" Margin="0,2,0,5"/>
+                            <TextBox x:Name="txtLastName" TextWrapping="Wrap" Text="" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <TextBox x:Name="txtAge" TextWrapping="Wrap" Text="" Width="280" Height="23" Margin="0,0,0,5"/>
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton x:Name="rbMale" Content="Мужской" Margin="0,0,20,0"/>
                                 <RadioButton x:Name="rbFemale" Content="Женский" Margin="0,0,20,0"/>
                             </StackPanel>
+                            <DatePicker x:Name="dpDateBirthday" Margin="0,5,0,5" Width="280" 
+                            DisplayDateStart="1900-01-01" DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
@@ -67,14 +77,14 @@
                             <Label x:Name="lbPhone" Content="Телефон"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" Text="TextBox" Width="280" Height="21" Margin="0,1,0,5"/>
-                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" Text="TextBox" Width="280" Height="21" Margin="0,1,0,5"/>
+                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" Text="" Width="280" Height="21" Margin="0,1,0,5"/>
+                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" Text="" Width="280" Height="21" Margin="0,1,0,5"/>
                         </StackPanel>
 
                     </Grid>
                 </GroupBox>
                 <!--Обучение-->
-                <GroupBox Height="82" Header="Обучение" Margin="5,0,0,5">
+                <GroupBox Height="100" Header="Обучение" Margin="5,0,0,5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="49*"/>
@@ -83,8 +93,9 @@
                         <StackPanel>
                             <Label x:Name="lbCourse" Content="Курс"/>
                             <Label x:Name="lbSpecialization" Content="Направление" FontSize="11"/>
+                            <Label x:Name="lbGrade" Content="Успеваемость" FontSize="11"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="1">
+                        <StackPanel Grid.Column="1" Width="289">
                             <ComboBox x:Name="cmbCourse" Width="280" Margin="0,1,0,5" >
                                 <Button Content="1"/>
                                 <Button Content="2"/>
@@ -96,16 +107,48 @@
                                 <ComboBoxItem Content="Дизайн"/>
                                 <ComboBoxItem Content="Сети"/>
                             </ComboBox>
+                            <StackPanel Grid.Column="1" Width="289" Orientation="Horizontal">
+                                <Slider x:Name="sliderGrade" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+                                        IsSnapToTickEnabled="True" TickFrequency="1" 
+                                        Margin="10,0,0,0" Value="0" Width="120"/>
+                                <TextBlock x:Name="txtGradeDisplay" TextWrapping="Wrap" Text="TextBlock"/>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
             </StackPanel>
             <!--Правая колонка с фото-->
+
             <StackPanel Grid.Column="1">
-                <Border BorderBrush="Black" BorderThickness="1" Height="279"
-                        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,0,10,0"/>
-                <Image Name="imgPhoto" Stretch="Uniform"/>
-                <Button x:Name="btnLoadPhoto" Content="Загрузить фото" Click="btnLoadPhoto_Click"/>
+                <GroupBox Height="274">
+                    <StackPanel Grid.Column="1">
+                        <Border BorderBrush="Black" BorderThickness="1" Height="198"
+                            Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,19,10,12"/>
+                        <Image Name="imgPhoto" Stretch="Uniform"/>
+                        <Button x:Name="btnLoadPhoto" Content="Загрузить фото" Click="btnLoadPhoto_Click" Width="200"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Height="89" VerticalContentAlignment="Bottom">
+                    <ProgressBar x:Name="progressBar" Minimum="0" Maximum="100" Height="15" Width="368" Margin="2,0,0,0">
+                        <ProgressBar.Value>
+                            <MultiBinding Converter="{StaticResource ProgressSumConverter}">
+                                <Binding ElementName="txtFirstName" Path="Text" />
+                                <Binding ElementName="txtLastName" Path="Text" />
+                                <Binding ElementName="txtAge" Path="Text" />
+                                <Binding ElementName="rbMale" Path="IsChecked" />
+                                <Binding ElementName="rbFemale" Path="IsChecked" />
+                                <Binding ElementName="dpDateBirthday" Path="SelectedDate" />
+                                <Binding ElementName="txtEmail" Path="Text" />
+                                <Binding ElementName="txtPhone" Path="Text" />
+                                <Binding ElementName="cmbCourse" Path="SelectedIndex" />
+                                <Binding ElementName="cmbSpecialization" Path="SelectedIndex" />
+                                <Binding ElementName="sliderGrade" Path="Value" />
+                                <Binding ElementName="imgPhoto" Path="Source.Length" />
+                            </MultiBinding>
+                        </ProgressBar.Value>
+                    </ProgressBar>
+                </GroupBox>
+                
             </StackPanel>
         </Grid>
 
