@@ -45,9 +45,9 @@
                             <Label x:Name="lbGender" Content="Пол: "/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBox x:Name="TxtFirstName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,2,0,5"/>
-                            <TextBox x:Name="TxtLastName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
-                            <TextBox x:Name="TxtAge" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <TextBox x:Name="txtFirstName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,2,0,5"/>
+                            <TextBox x:Name="txtLastName" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
+                            <TextBox x:Name="txtAge" TextWrapping="Wrap" Text="TextBox" Width="280" Height="23" Margin="0,0,0,5"/>
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton x:Name="rbMale" Content="Мужской" Margin="0,0,20,0"/>
                                 <RadioButton x:Name="rbFemale" Content="Женский" Margin="0,0,20,0"/>
@@ -102,16 +102,22 @@
             </StackPanel>
             <!--Правая колонка с фото-->
             <StackPanel Grid.Column="1">
-                <Border BorderBrush="Black" BorderThickness="1" Height="279"/>
-                <Button Content="Загрузить фото"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="279"
+                        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,0,10,0"/>
+                <Image Name="imgPhoto" Stretch="Uniform"/>
+                <Button x:Name="btnLoadPhoto" Content="Загрузить фото" Click="btnLoadPhoto_Click"/>
             </StackPanel>
         </Grid>
 
+        
+
         <!--Кнопки действий-->
-        <Button Content="Очистить" HorizontalAlignment="Left" 
-                Height="30" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Center" Width="90"/>
-        <Button Content="Сохранить" 
-                Height="30" Margin="0,20,40,0" Grid.Row="2" VerticalAlignment="Top" Width="90" HorizontalAlignment="Right"/>
+        <Button x:Name="btrClear" Content="Очистить" HorizontalAlignment="Left" 
+                Height="30" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Center" Width="90" Click="btrClear_click"/>
+        <Button x:Name="btnSave" Content="Сохранить" 
+                Height="30" Margin="0,20,40,0" Grid.Row="2" VerticalAlignment="Top" Width="90" HorizontalAlignment="Right" Click="btnSave_Click"/>
 
     </Grid>
 </Window>
+
+    
