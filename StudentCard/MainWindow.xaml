@@ -122,9 +122,10 @@
             <StackPanel Grid.Column="1">
                 <GroupBox Height="274">
                     <StackPanel Grid.Column="1">
-                        <Border BorderBrush="Black" BorderThickness="1" Height="198"
-                            Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,19,10,12"/>
-                        <Image Name="imgPhoto" Stretch="Uniform"/>
+                        <Border BorderBrush="Black" BorderThickness="1" Height="198" Margin="0,19,10,12">
+                            <Image Name="imgPhoto" Stretch="Uniform"/>
+                        </Border>
+                        
                         <Button x:Name="btnLoadPhoto" Content="Загрузить фото" Click="btnLoadPhoto_Click" Width="200"/>
                     </StackPanel>
                 </GroupBox>

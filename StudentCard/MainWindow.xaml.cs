@@ -61,7 +61,7 @@ namespace StudentCard
         public MainWindow()
         {
             InitializeComponent();
-            btnLoadPhoto.Click += btnLoadPhoto_Click;
+            //btnLoadPhoto.Click += btnLoadPhoto_Click;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
